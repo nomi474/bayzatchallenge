@@ -81,7 +81,7 @@ export function selectTradeLicense() {
 }
 
 export function enterLabourNum(labourNum) {
-    cy.get(addEmployeePO.labourNum).type()
+    cy.get(addEmployeePO.labourNum).type(labourNum)
 }
 
 export function selectEmployeeNotInsured() {

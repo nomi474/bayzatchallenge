@@ -12,7 +12,7 @@ const addEmployeePO = {
     hiringDate:'input[name="hiredAtFormatted"]',
     probationEndDate:'input[name="probationEndDateFormatted"]',
     countryOfResidence:'.ember-power-select-placeholder',
-    residenceVisaLocation:'.ember-power-select-placeholder div',
+    residenceVisaLocation:'.ember-power-select-placeholder',
     tradeLicense:'.ember-power-select-placeholder',
     labourNum:'input[name="ministryOfLabourId"]',
     currentlyInsuredYes:'button:nth-child(1) > i',
