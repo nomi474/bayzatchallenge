@@ -12,5 +12,7 @@ export function visitHomePage(){
  * This function clicks on the Login menu item from home page
  */
 export function selectLoginMenuItem(){
+    cy.get(bayzatHomePO.loginMenuItem).should('have.text', 'Login')
+    cy.get(bayzatHomePO.loginMenuItem).should('be.visible')
     cy.get(bayzatHomePO.loginMenuItem).click();
 }

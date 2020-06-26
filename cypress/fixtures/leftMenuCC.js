@@ -18,6 +18,7 @@ export function clickViewTeamSideMenuItem() {
 }
 
 export function logout() {
+    cy.get(leftMenuPO.logOutLink).should('be.visible')
     cy.get(leftMenuPO.logOutLink).click()
     cy.get(loginPagePO.loginBtn).should('be.visible')
 }
