@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/nomi474/bayzatchallenge#readme",
   "devDependencies": {
-    "cypress": "^4.9.0"
+    "cypress": "^4.9.0",
+    "faker": "^4.1.0"
   }
 }
