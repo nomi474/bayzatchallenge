@@ -1,6 +1,7 @@
 import loginPagePO from "./loginPagePO";
 
 export function enterUsername(userName){
+    cy.get(loginPagePO.userNameInput).should('be.visible')
     cy.get(loginPagePO.userNameInput).type(userName)
 }
 

@@ -18,8 +18,8 @@ const addEmployeePO = {
     currentlyInsuredYes:'button:nth-child(1) > i',
     currentlyInsuredNo:'button:nth-child(2) > i',
     createEmployeeBtn:'div.col-sm-11.col-md-10.col-lg-8.mar-ver > div > div > button:nth-child(2)',
-    // createAndAddAnotherBtn:'',
-    // cancelBtn:'',
+    createAndAddAnotherBtn:'div.col-sm-11.col-md-10.col-lg-8.mar-ver > div > div > button:nth-child(3)',
+    cancelBtn:'a[href="/enterprise/dashboard/employees/list?status=active"]',
     selectForm:'form[role="form"]'
 };
 

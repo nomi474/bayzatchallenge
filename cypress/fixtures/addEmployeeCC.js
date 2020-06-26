@@ -1,5 +1,5 @@
 import addEmployeePO from "./addEmployeePO";
-
+import faker from "faker";
 
 export function enterPreferredName(preferredName) {
     cy.get(addEmployeePO.preferredName).type(preferredName)
@@ -63,21 +63,25 @@ export function selectCountryOfResidence(country) {
 }
 
 export function selectVisaLocation(location) {
-    cy.get(addEmployeePO.residenceVisaLocation).contains("Please select visa location").click()
-    cy.get('li.ember-power-select-option').each(($el, index, $list) => {
-        if ($el.text() === location) {
-            $el.click()
-        } else {
-            cy.log(location + " not found")
-        }
-    })
-    cy.get(addEmployeePO.selectForm).click({ force: true })
+    if (!(location === 'no')) {
+        cy.get(addEmployeePO.residenceVisaLocation).contains("Please select visa location").click()
+        cy.get('li.ember-power-select-option').each(($el, index, $list) => {
+            if ($el.text() === location) {
+                $el.click()
+            } else {
+                cy.log(location + " not found")
+            }
+        })
+        cy.get(addEmployeePO.selectForm).click({ force: true })
+    }
 }
 
-export function selectTradeLicense() {
-    cy.get(addEmployeePO.tradeLicense).contains("Please select trade license").type('Test')
-    cy.get('.ember-power-select-option').click()
-    cy.get(addEmployeePO.selectForm).click({ force: true })
+export function selectTradeLicense(tradeLicense) {
+    if (!(tradeLicense === "no")) {
+        cy.get(addEmployeePO.tradeLicense).contains("Please select trade license").type(tradeLicense)
+        cy.get('.ember-power-select-option').click()
+        cy.get(addEmployeePO.selectForm).click({ force: true })
+    }
 }
 
 export function enterLabourNum(labourNum) {
@@ -88,6 +92,56 @@ export function selectEmployeeNotInsured() {
     cy.get(addEmployeePO.currentlyInsuredNo).click()
 }
 
-export function clickCreateEmployeeButton() {
-    cy.get(addEmployeePO.createEmployeeBtn).click()
+export function clickCreateEmployeeButton(addMore) {
+    if (addMore === "true") {
+        cy.get(addEmployeePO.createAndAddAnotherBtn).click()
+    } else {
+        cy.get(addEmployeePO.createEmployeeBtn).click()
+    }
+}
+
+
+export function addNewEmployee(employeeData) {
+    let firstName = faker.name.firstName().replace(/[^a-zA-Z]/g, "");
+    let lastName = faker.name.lastName().replace(/[^a-zA-Z]/g, "");
+    let preferredName = firstName + ' ' + lastName
+
+    enterPreferredName(preferredName)
+    enterFirstName(firstName)
+    enterLastName(lastName)
+    // enterDateOfBirth(faker.date.past(33))
+    enterDateOfBirth(employeeData.get("dob"))
+    //select nationality
+    selectNationality(employeeData.get("nationality"))
+    //select gender
+    selectgender(employeeData.get("gender"))
+    //Enter phone number
+    enterMobileNumber(faker.phone.phoneNumberFormat())
+    //Enter email address
+    enterEmailAddress(faker.internet.email())
+    //Enter work number
+    enterWorkPhone(faker.phone.phoneNumberFormat())
+    //Enter work title
+    enterJobTitle(faker.name.jobTitle())
+    //Enter hiring date
+    enterHiringDate(employeeData.get("hiringDate"))
+    //Enter probation end date
+    enterProbationEndDate(employeeData.get("probationEndDate"))
+    //select country of residence
+    selectCountryOfResidence(employeeData.get("residentCountry"))
+    //select visa location
+    selectVisaLocation(employeeData.get("visaLocation"))
+
+    //select trade license
+    selectTradeLicense(employeeData.get("tradeLicense"))
+    if (employeeData.get("labourNum") === "no") {
+        //do nothing
+    } else {
+        enterLabourNum(faker.finance.account(14))
+    }
+    //select radio button for employee insurance.
+    selectEmployeeNotInsured()
+    clickCreateEmployeeButton(employeeData.get("addMore"))
+
+    return preferredName;
 }
