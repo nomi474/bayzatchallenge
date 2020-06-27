@@ -192,7 +192,7 @@ export function clickCreateEmployeeButton(addMore) {
         cy.get(addEmployeePO.createEmployeeBtn).should('be.visible')
         cy.get(addEmployeePO.createEmployeeBtn).click()
     }
-    cy.wait(5000)
+    cy.wait(6000)
 }
 
 /**

@@ -26,6 +26,7 @@ import viewTeamPO from "./viewTeamPO";
         cy.get(viewTeamPO.deleteButton).click()
         cy.get(viewTeamPO.confirmDelete).should('be.visible')
         cy.get(viewTeamPO.confirmDelete).click()
+        cy.wait(5000)
     }
 
     /**
@@ -34,6 +35,7 @@ import viewTeamPO from "./viewTeamPO";
     export function clearFilters(){
         cy.get(viewTeamPO.clearFilters).click()
         cy.get(viewTeamPO.searchEmployee).should('be.empty')
+        cy.wait(5000)
     }
 
     /**

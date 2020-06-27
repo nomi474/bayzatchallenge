@@ -5,7 +5,6 @@ import loginPagePO from "./loginPagePO";
  * 
  */
 export function selectAddEmployeesSideMenuItem() {
-    // cy.get(leftMenuPO.addEmployees).scrollIntoView()
     cy.get(leftMenuPO.addEmployees).click({ animationDistanceThreshold: 20 })
 }
 

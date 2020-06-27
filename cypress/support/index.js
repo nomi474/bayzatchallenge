@@ -18,3 +18,9 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+// now any cookie with the name 'session_id' will
+// not be cleared before each test runs
+Cypress.Cookies.defaults({
+    whitelist: 'session_id'
+  })
