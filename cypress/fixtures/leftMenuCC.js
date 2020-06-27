@@ -1,7 +1,9 @@
 import leftMenuPO from "./leftMenuPO";
 import loginPagePO from "./loginPagePO";
 
-
+/**
+ * 
+ */
 export function selectAddEmployeesSideMenuItem() {
     // cy.get(leftMenuPO.addEmployees).scrollIntoView()
     cy.get(leftMenuPO.addEmployees).click({ animationDistanceThreshold: 20 })
@@ -17,6 +19,9 @@ export function clickViewTeamSideMenuItem() {
     })
 }
 
+/**
+ * logs out the user and makes sure that log in option is visible
+ */
 export function logout() {
     cy.get(leftMenuPO.logOutLink).should('be.visible')
     cy.get(leftMenuPO.logOutLink).click()

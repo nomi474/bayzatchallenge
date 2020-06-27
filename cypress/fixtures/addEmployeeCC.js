@@ -1,34 +1,58 @@
 import addEmployeePO from "./addEmployeePO";
 import faker from "faker";
 
+/**
+ * inputs preferred name provided by the user
+ * @param {*} preferredName 
+ */
 export function enterPreferredName(preferredName) {
     cy.get(addEmployeePO.preferredName).should('be.empty')
-    cy.get(addEmployeePO.preferredName).type(preferredName).should('have.text', preferredName)
+    cy.get(addEmployeePO.preferredName).type(preferredName)
 }
 
+/**
+ *  * inputs first name provided by the user
+ * @param {*} firstName 
+ */
 export function enterFirstName(firstName) {
     cy.get(addEmployeePO.firstName).should('be.empty')
-    cy.get(addEmployeePO.firstName).type(firstName).should('have.text', firstName)
+    cy.get(addEmployeePO.firstName).type(firstName)
 }
 
+/**
+ *  * inputs last name provided by the user
+ * @param {*} lastName 
+ */
 export function enterLastName(lastName) {
     cy.get(addEmployeePO.lastName).should('be.empty')
-    cy.get(addEmployeePO.lastName).type(lastName).should('have.text', lastName)
+    cy.get(addEmployeePO.lastName).type(lastName)
 }
 
+/**
+ * 
+ * @param {*} dateOfBirth 
+ */
 export function enterDateOfBirth(dateOfBirth) {
     cy.get(addEmployeePO.dateOfBirth).should('be.visible')
-    cy.get(addEmployeePO.dateOfBirth).type(dateOfBirth).should('have.text', dateOfBirth)
+    cy.get(addEmployeePO.dateOfBirth).type(dateOfBirth)
     cy.get(addEmployeePO.selectForm).click({ force: true })
+
 }
 
+/**
+ * 
+ * @param {*} nationality 
+ */
 export function selectNationality(nationality) {
     cy.get(addEmployeePO.nationality).should('be.visible')
-    cy.get(addEmployeePO.nationality).contains("Please select nationality").type(nationality).should('have.text', nationality)
+    cy.get(addEmployeePO.nationality).contains("Please select nationality").type(nationality)
     cy.get('.ember-power-select-option').click()
-    cy.get(addEmployeePO.selectForm).click({ force: true })
 }
 
+/**
+ * 
+ * @param {*} gender 
+ */
 export function selectgender(gender) {
     cy.get(addEmployeePO.gender).should('be.visible')
     cy.get(addEmployeePO.gender).contains("Please select gender").type(gender)
@@ -37,38 +61,66 @@ export function selectgender(gender) {
     cy.get(addEmployeePO.gender).should('not.be.empty')
 }
 
+/**
+ * 
+ * @param {*} mobile 
+ */
 export function enterMobileNumber(mobile) {
     cy.get(addEmployeePO.mobile).should('be.visible')
-    cy.get(addEmployeePO.mobile).type(mobile).should('have.text', mobile)
+    cy.get(addEmployeePO.mobile).type(mobile)
 }
 
+/**
+ * 
+ * @param {*} email 
+ */
 export function enterEmailAddress(email) {
     cy.get(addEmployeePO.workEmail).should('be.visible')
-    cy.get(addEmployeePO.workEmail).type(email).should('have.text', email)
+    cy.get(addEmployeePO.workEmail).type(email)
 }
 
+/**
+ * 
+ * @param {*} phone 
+ */
 export function enterWorkPhone(phone) {
     cy.get(addEmployeePO.workPhone).should('be.visible')
-    cy.get(addEmployeePO.workPhone).type(phone).should('have.text', phone)
+    cy.get(addEmployeePO.workPhone).type(phone)
 }
 
+/**
+ * 
+ * @param {*} title 
+ */
 export function enterJobTitle(title) {
     cy.get(addEmployeePO.jobTitle).should('be.visible')
-    cy.get(addEmployeePO.jobTitle).type(title).should('have.text', title)
+    cy.get(addEmployeePO.jobTitle).type(title)
 }
 
+/**
+ * 
+ * @param {*} hiringDate 
+ */
 export function enterHiringDate(hiringDate) {
     cy.get(addEmployeePO.hiringDate).should('be.visible')
-    cy.get(addEmployeePO.hiringDate).type(hiringDate).should('have.text', hiringDate)
+    cy.get(addEmployeePO.hiringDate).type(hiringDate)
     cy.get(addEmployeePO.selectForm).click({ force: true })
 }
 
+/**
+ * 
+ * @param {*} probationEndDate 
+ */
 export function enterProbationEndDate(probationEndDate) {
     cy.get(addEmployeePO.probationEndDate).should('be.visible')
-    cy.get(addEmployeePO.probationEndDate).type(probationEndDate).should('have.text', probationEndDate)
+    cy.get(addEmployeePO.probationEndDate).type(probationEndDate)
     cy.get(addEmployeePO.selectForm).click({ force: true })
 }
 
+/**
+ * 
+ * @param {*} country 
+ */
 export function selectCountryOfResidence(country) {
     cy.get(addEmployeePO.countryOfResidence).should('be.visible')
     cy.get(addEmployeePO.countryOfResidence).contains("Please select country of residence").type(country)
@@ -76,6 +128,10 @@ export function selectCountryOfResidence(country) {
     cy.get(addEmployeePO.selectForm).click({ force: true })
 }
 
+/**
+ * 
+ * @param {*} location 
+ */
 export function selectVisaLocation(location) {
     if (!(location === 'no')) {
         cy.get(addEmployeePO.residenceVisaLocation).should('be.visible')
@@ -91,6 +147,10 @@ export function selectVisaLocation(location) {
     }
 }
 
+/**
+ * 
+ * @param {*} tradeLicense 
+ */
 export function selectTradeLicense(tradeLicense) {
     if (!(tradeLicense === "no")) {
         cy.get(addEmployeePO.tradeLicense).should('be.visible')
@@ -100,30 +160,45 @@ export function selectTradeLicense(tradeLicense) {
     }
 }
 
+/**
+ * 
+ * @param {*} labourNum 
+ */
 export function enterLabourNum(labourNum) {
     cy.get(addEmployeePO.labourNum).should('be.empty')
     cy.get(addEmployeePO.labourNum).should('be.visible')
-    cy.get(addEmployeePO.labourNum).type(labourNum).should('have.text', labourNum)
+    cy.get(addEmployeePO.labourNum).type(labourNum)
 }
 
+/**
+ * 
+ */
 export function selectEmployeeNotInsured() {
     cy.get(addEmployeePO.currentlyInsuredNo).should('be.visible')
     cy.get(addEmployeePO.currentlyInsuredNo).click()
 }
 
+/**
+ * 
+ * @param {*} addMore 
+ */
 export function clickCreateEmployeeButton(addMore) {
     if (addMore === "true") {
-        cy.get(addEmployeePO.createAndAddAnotherBtn).should('have.text',  'Create and add another')
+        cy.get(addEmployeePO.createAndAddAnotherBtn).should('have.text', 'Create and add another')
         cy.get(addEmployeePO.createAndAddAnotherBtn).should('be.visible')
         cy.get(addEmployeePO.createAndAddAnotherBtn).click()
     } else {
-        cy.get(addEmployeePO.createEmployeeBtn).should('have.text',  'Create')
+        cy.get(addEmployeePO.createEmployeeBtn).should('have.text', 'Create')
         cy.get(addEmployeePO.createEmployeeBtn).should('be.visible')
         cy.get(addEmployeePO.createEmployeeBtn).click()
     }
+    cy.wait(5000)
 }
 
-
+/**
+ * Adds all employee data to create an employee
+ * @param {*} employeeData 
+ */
 export function addNewEmployee(employeeData) {
     let firstName = faker.name.firstName().replace(/[^a-zA-Z]/g, "");
     let lastName = faker.name.lastName().replace(/[^a-zA-Z]/g, "");
